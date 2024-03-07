@@ -21,8 +21,8 @@ volatile unsigned *gpio;
 // Set up a memory region to access GPIO
 void setup_io() {
     /* open /dev/mem */
-    if ((mem_fd = open("/dev/mem", O_RDWR|O_SYNC) ) < 0) {
-        printf("Can't open /dev/mem: %s\n", strerror(errno));
+    if ((mem_fd = open("/dev/gpiomem", O_RDWR|O_SYNC) ) < 0) {
+        printf("Can't open /dev/gpiomem: %s\n", strerror(errno));
         exit(-1);
     }
 
