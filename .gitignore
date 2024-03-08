@@ -4,3 +4,4 @@ main
 *.cmake
 CMakeCache.txt
 Makefile
+/my_venv
