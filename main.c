@@ -8,7 +8,7 @@
 #include <errno.h>
 #include <stdbool.h>
 #include <pthread.h> // Include for multi-threading
-#include <paho-mqtt3c.h> // Include for MQTT client
+#include "MQTTClient.h" // Include for MQTT client
 
 #define BCM2711_PERI_BASE 0xFE000000
 #define GPIO_BASE          (BCM2711_PERI_BASE + 0x200000)
@@ -114,6 +114,7 @@ void on_false_radio_clicked(GtkToggleButton *button, gpointer user_data) {
 
 // Callback function for activating the application
 static void on_activate(GtkApplication *app, gpointer user_data);
+void on_refresh_temperature_clicked(GtkButton *button, gpointer user_data);
 
 int main(int argc, char *argv[]) {
     setup_io();

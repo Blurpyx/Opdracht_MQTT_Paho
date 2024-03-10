@@ -6,17 +6,16 @@ cmake_minimum_required(VERSION 3.10)
 
 # Use the package PkgConfig to detect GTK+ headers/library files
 find_package(PkgConfig REQUIRED)
-find_package(eclipse-paho-mqtt-c REQUIRED)
 pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
-pkg_check_modules(PAHO_MQTT3C REQUIRED paho-mqtt3c)
+
+find_library(PAHO_MQTT_LIBRARY paho-mqtt3cs HINTS "/usr/local/lib")
 
 # Add the executable target
 add_executable(main main.c)
 
 # Link the executable with GTK3
 target_link_libraries(main PRIVATE ${GTK3_LIBRARIES})
-target_link_libraries(MQTTVersion eclipse-paho-mqtt-c::paho-mqtt3c)
-target_link_libraries(main ${PAHO_MQTT3C_LIBRARIES})
+target_link_libraries(main ${PAHO_MQTT_LIBRARIES})
 
 # Setup CMake to use GTK3, tell the compiler where to look for headers
 # and to the linker where to look for libraries
